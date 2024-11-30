@@ -17,14 +17,6 @@ public class ArrayUtility<T> {
     }
 
 
-//    Integer expected = 7;
-//    Integer[] inputArray = {1, 2, expected, 8, 4, 5, expected, 0, 9, 8, expected};
-//    Integer[] arrayToMerge = {1, 2, expected, 8, 4, 5, expected, 0, 9, 8};
-//    ArrayUtility<Integer> arrayUtility = new ArrayUtility<Integer>(inputArray);
-//
-//    // When
-//    Integer actual = arrayUtility.getMostCommonFromMerge(arrayToMerge);
-
     public int countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
         T[] mergedArray = (T[]) Array.newInstance(inputArray.getClass().getComponentType(), inputArray.length + arrayToMerge.length);
         System.arraycopy(inputArray, 0, mergedArray, 0, inputArray.length);
@@ -55,6 +47,16 @@ public class ArrayUtility<T> {
             }
         }
         return mostFrequentElement;
+    }
+
+
+    public int getNumberOfOccurrences(T valueToEvaluate) {
+        int count = 0;
+        for (T t : inputArray){
+            if (t == valueToEvaluate){
+                count++;
+            }
+        } return count;
     }
 }
 
