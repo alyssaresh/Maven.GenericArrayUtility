@@ -23,7 +23,7 @@ public class ArrayUtility<T> {
         System.arraycopy(arrayToMerge, 0, mergedArray, inputArray.length, arrayToMerge.length);
         int totalCount = 0;
         for (T t : mergedArray) {
-            if (t == valueToEvaluate) totalCount++;
+            if (t.equals(valueToEvaluate)) totalCount++;
         }
         return totalCount;
     }
@@ -52,11 +52,34 @@ public class ArrayUtility<T> {
 
     public int getNumberOfOccurrences(T valueToEvaluate) {
         int count = 0;
-        for (T t : inputArray){
-            if (t == valueToEvaluate){
+        for (T t : inputArray) {
+            if (t.equals(valueToEvaluate)) {
                 count++;
             }
-        } return count;
+        }
+        return count;
+    }
+
+    public T[] removeValue(T valueToRemove) {
+    int size = 0;
+        for (T t : inputArray) {
+        if (!t.equals(valueToRemove)) {
+            size++;
+        }
+    }
+    // Create a new array of the correct size
+    T[] removedArray = (T[]) Array.newInstance(inputArray.getClass().getComponentType(), size);
+
+    // Now, copy the values from inputArray to removedArray, skipping valueToRemove
+    int index = 0; // This will track the position in the removedArray
+        for (T t : inputArray) {
+        if (!t.equals(valueToRemove)) {
+            removedArray[index] = t;
+            index++;
+        }
+    }
+
+        return removedArray;
     }
 }
 
